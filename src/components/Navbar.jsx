@@ -16,7 +16,7 @@ export default function Navbar({ bg, color, shadow }) {
       w="100%"
       shadow={shadow}
     >
-      <Heading as="h3" fontSize={{ base: "1rem", lg: "1.2rem" }}>
+      <Heading as="h2" fontSize={{ base: "1rem", lg: "1.2rem" }}>
         <Link href="/" fontWeight={"600"} _hover={{textTransform: "none", opacity: ".7"}} transition="opacity ease .3s">Where in the world?</Link>
       </Heading>
       <Button

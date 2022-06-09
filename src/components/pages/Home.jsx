@@ -9,6 +9,7 @@ import {
   Spinner,
   useToast,
   Select,
+  Link,
 } from "@chakra-ui/react";
 import _ from "lodash";
 import React, { memo, useEffect, useRef, useState } from "react";
@@ -42,6 +43,7 @@ function Home({ bg, color, shadow, bodybg }) {
 
   useEffect(() => {
     getApi();
+    renderToast(filteredData);
     return () => {
       window.removeEventListener("load", () => getApi());
     };
@@ -56,7 +58,7 @@ function Home({ bg, color, shadow, bodybg }) {
       status: "success",
       isClosable: "true",
       position: "bottom-right",
-      duration: 1000,
+      duration: 2000,
     });
   };
   const renderCountryRegions = () => {
@@ -76,7 +78,13 @@ function Home({ bg, color, shadow, bodybg }) {
           <Spinner />
         </Box>
       );
-      else if(error.hasError) return <div>{error.message}</div>
+      else if(error.hasError) return (
+        <Box>
+        Opps! An Error Just Occured.
+          <Text>{error.message}</Text>
+          Try refereshing the page or check out our <Link href="/">homepage</Link>
+      </Box>
+      )
     else {
       return filteredData.map(
         ({ name, flags, capital, population, region }, index) => (
@@ -103,7 +111,8 @@ function Home({ bg, color, shadow, bodybg }) {
         .includes(userSearch.current.value.toLowerCase())
     );
     debounce(filteredCountries);
-    
+    return renderToast(filteredCountries)
+
   };
   const filterByRegion = () => {
     let filteredCountries = data.filter((country) =>
@@ -112,6 +121,7 @@ function Home({ bg, color, shadow, bodybg }) {
         .includes(selectedRegion.current.value.toLowerCase())
     );
     setFilteredData(filteredCountries);
+    return renderToast(filteredCountries)
   };
 
   return (
@@ -169,8 +179,7 @@ function Home({ bg, color, shadow, bodybg }) {
       <Flex flexDirection={{ base: "column", sm: "row" }} flexWrap="wrap" >
         {renderCountryCards()}
       </Flex>
-      {renderToast(filteredData)}
-    </Container>
+  </Container>
   );
 }
 export default React.memo(Home);

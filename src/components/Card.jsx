@@ -41,7 +41,7 @@ export default function Card({
         <Img loading="lazy" srcSet={flag.png ? flag.png : flag.svg} h="100%" alt={`${country}'s flag`} zIndex={"1"} w="100%" />
       </Box>
       <Box p={{ base: "1.5rem", '2xl': "1.8em" }} lineHeight="1.6em">
-        <Heading as="h5" fontSize="1.2rem" fontWeight="800" mb=".7rem">
+        <Heading as="h3" fontSize="1.2rem" fontWeight="800" mb=".7rem">
           {country}
         </Heading>
         <Text as="p">

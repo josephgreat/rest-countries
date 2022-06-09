@@ -72,7 +72,9 @@ function CountryDetail (props) {
   else if(error.hasError) {
     return (
       <Box>
+        Opps! An Error Just Occured.
           <Text>{error.message}</Text>
+          Try refereshing the page or check out our <Link href="/">homepage</Link>
       </Box>
     ); 
   }
@@ -116,7 +118,7 @@ function CountryDetail (props) {
           <Img loading="lazy" src={checkValidity(flags.svg, flags.png)} alt={`${name.common}"s flag`} />
         </Box>
         <Box as={motion.div} mt={{base: "1.5em", lg: "0"}} animate={{scale: [1.1, 1], opacity: [.3, 1]}} transition={"scale, opacity ease .3s"} width={{base: "100%", sm: "90%",lg: "50%", xl: "42%"}} mx={"auto"}  order={{sm: 3, lg: 2}}>
-          <Heading as="h4" mb={{ base: ".7em" }}>
+          <Heading as="h3" mb={{ base: ".7em" }}>
             {name.common}
           </Heading>
           <Flex flexDir={{ base: "column", sm: "row" }}  lineHeight="2em" justifyContent={{sm: "space-between"}}>
