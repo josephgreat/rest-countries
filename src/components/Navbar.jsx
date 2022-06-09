@@ -1,13 +1,8 @@
-import {
-  Button,
-  Flex,
-  Heading,
-  useColorMode,
-} from "@chakra-ui/react";
+import { Button, Flex, Heading, Link, useColorMode } from "@chakra-ui/react";
 import React from "react";
 import { FaMoon, FaLightbulb } from "react-icons/fa";
 
-export default function Navbar({bg, color, shadow}) {
+export default function Navbar({ bg, color, shadow }) {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
@@ -18,9 +13,11 @@ export default function Navbar({bg, color, shadow}) {
       alignItems="center"
       bg={bg}
       color={color}
+      w="100%"
+      shadow={shadow}
     >
       <Heading as="h3" fontSize={{ base: "1rem", lg: "1.2rem" }}>
-        Where in the world?
+        <Link href="/" fontWeight={"600"} _hover={{textTransform: "none", opacity: ".7"}} transition="opacity ease .3s">Where in the world?</Link>
       </Heading>
       <Button
         bg="transparent"
