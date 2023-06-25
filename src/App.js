@@ -12,6 +12,10 @@ function App() {
   const bodyBg = useColorModeValue("hsl(0, 0%, 95%)", "transparent");
   const color = useColorModeValue("hsl(200, 15%, 8%)", "hsl(0, 0%, 100%)");
   const shadow = useColorModeValue("0 2px 4px hsl(0, 0%, 90%)", "0 2px 5px hsl(209, 23%, 28%)");
+  if ("serviceWorker" in navigator) {
+    // register service worker
+    navigator.serviceWorker.register("service-worker.js");
+  }
   return (
     <ErrorBoundary>
       <Container maxW={"auto"} p="0" bg={bodyBg}>
